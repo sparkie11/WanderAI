@@ -63,7 +63,7 @@ function CreateTrip() {
 
 
             </div>))}
-          </div>
+          </div> 
         </div>
 
 
