@@ -3,6 +3,7 @@ import { Input } from '@/components/ui/input';
 import { SelectBudgetOptions, SelectTravelList } from '@/constants/options';
 import React, { useEffect, useState } from 'react'
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
+import { toast } from 'sonner';
 
 function CreateTrip() {
   const [place , setPlace]= useState();
@@ -11,18 +12,26 @@ function CreateTrip() {
   const handleInputChange = (name,value) => {
     // setFormData(prevState => ({...prevState, [name]: value }));
     if(name == "no_of_days" && value > 5 ){
-      
+
     } 
     setFormData({...formData,[name]:value});
 
   }
 
+  const onGenerateTrip = () =>{
+    if(formData?.no_of_days > 5 && !formData?.location || !formData?.budget || !formData?.traveler || !formData?.activity ){
+      toast("Please fill all details and try again")
+      return ;
+    }
+    console.log(formData);
+  }
+
 // 
 
-  useEffect(() =>{
-    console.log(formData)
+  // useEffect(() =>{
+  //   console.log(formData)
 
-  },[formData])
+  // },[formData])
   return (
     <div className='sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 mt-10'> 
         <h2 className='font-bold text-3xl'>
@@ -83,7 +92,7 @@ function CreateTrip() {
           </div>
         </div>
             <div className='my-10 flex justify-end '>
-                <Button>Generate Trip</Button>
+                <Button onClick={onGenerateTrip}>Generate Trip</Button>
 
             </div>
 
