@@ -10,6 +10,9 @@ function CreateTrip() {
 
   const handleInputChange = (name,value) => {
     // setFormData(prevState => ({...prevState, [name]: value }));
+    if(name == "no_of_days" && value > 5 ){
+      
+    } 
     setFormData({...formData,[name]:value});
 
   }
