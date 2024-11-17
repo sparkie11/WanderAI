@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Hero from './components/custom/Hero'
 
+//gau edit
 function App() {
   const [count, setCount] = useState(0)
 
